@@ -11,13 +11,15 @@ public class Mushroom {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
+	private String binomen; //fancier word scientific name (bi = two, nomen = name: two part name ex. Homo Sapiens)
 	private String edible;
 	private String taste;
 	
-	public Mushroom(long id, String name, String edible, String taste) {
+	public Mushroom(long id, String name, String binomen, String edible, String taste) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.binomen = binomen;
 		this.edible = edible;
 		this.taste = taste;
 	}
@@ -37,6 +39,12 @@ public class Mushroom {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public String getBinomen() {
+		return binomen;
+	}
+	public void setBinomen(String binomen) {
+		this.binomen = binomen;
+	}
 	public String getEdible() {
 		return edible;
 	}
@@ -51,6 +59,8 @@ public class Mushroom {
 	}
 	@Override
 	public String toString() {
-		return "Mushroom [id=" + id + ", name=" + name + ", edible=" + edible + ", taste=" + taste + "]";
+		return "Mushroom [id=" + id + ", name=" + name + ", binomen=" + binomen + ", edible=" + edible + ", taste="
+				+ taste + "]";
 	}
+
 }
