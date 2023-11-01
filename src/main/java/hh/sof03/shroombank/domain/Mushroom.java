@@ -1,5 +1,6 @@
 package hh.sof03.shroombank.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,11 +12,11 @@ public class Mushroom {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	private String binomen; //fancier word scientific name (bi = two, nomen = name: two part name ex. Homo Sapiens)
+	private String binomen; //fancier word scientific name
 	private String edible;
-	private String taste;
+	private int taste;
 	
-	public Mushroom(long id, String name, String binomen, String edible, String taste) {
+	public Mushroom(long id, String name, String binomen, String edible, int taste) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -51,10 +52,10 @@ public class Mushroom {
 	public void setEdible(String edible) {
 		this.edible = edible;
 	}
-	public String getTaste() {
+	public int getTaste() {
 		return taste;
 	}
-	public void setTaste(String taste) {
+	public void setTaste(int taste) {
 		this.taste = taste;
 	}
 	@Override

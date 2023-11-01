@@ -35,4 +35,15 @@ public class MushroomController {
 		model.addAttribute("mushrooms", mushroomRepo.findAll());
 		return "mushroomlist";
 	}
+	@GetMapping(value="/add")
+	public String addMushroom(Model model) {
+		model.addAttribute("mushroom", new Mushroom());
+		return "addmushroom";
+	}
+	//TODO: /save method (POST)
+	@PostMapping(value="/save")
+	public String saveMushroom(Mushroom mushroom) {
+		mushroomRepo.save(mushroom);
+		return "redirect:/mushroomlist";
+	}
 }
