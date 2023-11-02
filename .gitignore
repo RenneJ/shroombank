@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### postgres ###
+!**/src/main/resources/application.properties
+
