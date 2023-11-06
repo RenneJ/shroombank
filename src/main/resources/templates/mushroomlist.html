@@ -12,11 +12,20 @@
 				<th>Name</th>
 				<th>Edible</th>
 				<th>Taste</th>
+				<th></th>
+				<th></th>
 			</tr>
 			<tr th:each="mushroom : ${mushrooms}">
 				<td th:text="|${mushroom.name} (${mushroom.binomen})|"></td> <!-- pipes "||" allow literal substitutions -->
 				<td th:text="${mushroom.edible}"></td>
 				<td th:text="${mushroom.taste}"></td>
+				<td>
+					<a class = "btn btn-success" th:href = "@{/edit/{id}(id = ${mushroom.id})}">Edit</a>
+				</td>
+				<td> <!--  sec:authorize = "hasAuthority('ADMIN')" -->
+					<a class = "btn btn-danger" th:href = "@{/delete/{id}(id = ${mushroom.id})}">Delete</a>
+				</td>
 		</tbody>
 	</table>
+	<a class = "btn btn-success" href = "/add" >New Mushroom</a>
 </body>

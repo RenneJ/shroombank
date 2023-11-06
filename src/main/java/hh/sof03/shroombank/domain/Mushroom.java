@@ -4,14 +4,16 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
-@Entity
+@Entity(name="mushrooms")
 public class Mushroom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-	private String binomen; //fancier word scientific name (bi = two, nomen = name: two part name ex. Homo Sapiens)
+	@NotBlank(message = "Binomen cannot be left blank")
+	private String binomen; //fancier word scientific name
 	private String edible;
 	private String taste;
 	
