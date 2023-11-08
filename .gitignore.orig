@@ -32,11 +32,6 @@ build/
 ### VS Code ###
 .vscode/
 
-<<<<<<< HEAD
-### Postgresql ###
-.application.properties
-=======
 ### postgres ###
 *application.properties
 
->>>>>>> 7c6d1ea0b57802ae885049b87c9393cadc0e0c37

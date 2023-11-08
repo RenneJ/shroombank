@@ -13,9 +13,7 @@ public class Mushroom {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	private String name;
-
 	@NotBlank(message = "Binomen cannot be left blank")
-
 	private String binomen; //fancier word scientific name
 	private String edible;
 	private int taste;
