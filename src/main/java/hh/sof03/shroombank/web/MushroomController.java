@@ -40,7 +40,6 @@ public class MushroomController {
 		return "mushroomlist";
 	}
 	@GetMapping(value="/add")
-<<<<<<< HEAD
 	public String addMushroom (Model model) {
 		model.addAttribute("mushroom", new Mushroom());
 		return "addmushroom";
@@ -63,16 +62,14 @@ public class MushroomController {
 	//@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteMushroom(@PathVariable("id") Long id, Model model) {
 		mushroomRepo.deleteById(id);
-=======
-	public String addMushroom(Model model) {
-		model.addAttribute("mushroom", new Mushroom());
-		return "addmushroom";
+		return "redirect:mushroomlist";
 	}
+
 	//TODO: /save method (POST)
 	@PostMapping(value="/save")
 	public String saveMushroom(Mushroom mushroom) {
 		mushroomRepo.save(mushroom);
->>>>>>> eef534f6494775a0aa6d52b4b702ec59603dccef
+
 		return "redirect:/mushroomlist";
 	}
 }
