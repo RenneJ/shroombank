@@ -3,6 +3,7 @@ package hh.sof03.shroombank;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
 public class ShroombankApplication {
 

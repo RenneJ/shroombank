@@ -22,14 +22,14 @@
 				<label style = "min-width: 80px">Binomen</label>
 					<input type = "text" th:field = "*{binomen}" />
 				<div style = "clear: both; display: block; height: 10px;"></div>
-				<p th:errors = "*{binomen}" style = "color: red">Error</p>
+				<p th:errors = "*{binomen}" style = "color: red">Error text</p>
 				
 				<label style = "min-width: 80px">Edible</label>
 					<input type = "text" th:field = "*{edible}" />
 				<div style = "clear: both; display: block; height: 10px;"></div>
 	
 				<label style = "min-width: 80px">Taste</label>
-					<input type = "number" th:field = "*{taste}" />
+					<input type = "number" step = "0.5" th:field = "*{taste}" />
 				<div style = "clear: both; display: block; height: 10px;"></div>				
 
 				<input type = "submit" value = "Save" />

@@ -6,6 +6,19 @@
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body style = "padding: 15px">
+	<h2>Logged in as <span sec:authentication = "name"></span></h2>
+	<h2>Roles:
+		<th:block th:each = "role, iterStatus:${#authentication.getAuthorities()}">
+	    	<th:block th:text = "${role}" ></th:block>
+	    	 <!-- Tämä ehtolauseke ei tee juuri nyt mitään, mutta jos rooleja (authorities-attribuutteja) olisi useampi niin pilkut menisivät oikein-->
+	    	<th:block th:if = "${!iterStatus.last}">, </th:block>
+		</th:block>
+	</h2>
+	<div>
+		<form th:action = "@{/logout}" method = "post">
+			<input type = "submit" value = "Sign Out" class = "btn btn-sm btn-danger"/>
+		</form>
+	</div>
 	<table class = "table table-striped" style = "width:800px">
 		<tbody>
 			<tr>

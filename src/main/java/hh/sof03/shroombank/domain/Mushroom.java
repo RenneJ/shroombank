@@ -16,9 +16,9 @@ public class Mushroom {
 	@NotBlank(message = "Binomen cannot be left blank")
 	private String binomen; //fancier word scientific name
 	private String edible;
-	private int taste;
+	private double taste;
 	
-	public Mushroom(long id, String name, String binomen, String edible, int taste) {
+	public Mushroom(long id, String name, String binomen, String edible, double taste) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,10 +54,10 @@ public class Mushroom {
 	public void setEdible(String edible) {
 		this.edible = edible;
 	}
-	public int getTaste() {
+	public double getTaste() {
 		return taste;
 	}
-	public void setTaste(int taste) {
+	public void setTaste(double taste) {
 		this.taste = taste;
 	}
 	@Override

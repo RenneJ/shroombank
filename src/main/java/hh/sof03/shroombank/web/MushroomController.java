@@ -62,6 +62,6 @@ public class MushroomController {
 	//@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteMushroom(@PathVariable("id") Long id, Model model) {
 		mushroomRepo.deleteById(id);
-		return "mushroomlist";
+		return "redirect:/mushroomlist";
 	}
 }
