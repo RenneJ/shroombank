@@ -17,7 +17,7 @@
 				<p th:errors="*{username}" style="color: red">Error text</p>
 				
 				<label style="min-width: 80px">Password</label>
-					<input type="password" th:field="*{hash}" />
+					<input th:field="*{hash}" type="password"/>
 				<div style = "clear: both; display: block; height: 10px;"></div>
 				<p th:errors="*{hash}" style="color: red">Error text</p>			
 
