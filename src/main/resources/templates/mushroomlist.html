@@ -33,10 +33,10 @@
 				<td th:text="${mushroom.edible}"></td>
 				<td th:text="${mushroom.taste}"></td>
 				<td>
-					<a class = "btn btn-success" th:href = "@{/edit/{id}(id = ${mushroom.id})}">Edit</a>
+					<a class = "btn btn-success" th:href = "@{/edit/{id}(id = ${mushroom.mushroomid})}">Edit</a>
 				</td>
-				<td> <!--  sec:authorize = "hasAuthority('ADMIN')" -->
-					<a class = "btn btn-danger" th:href = "@{/delete/{id}(id = ${mushroom.id})}">Delete</a>
+				<td sec:authorize = "hasAuthority('ADMIN')"> <!--   -->
+					<a class = "btn btn-danger" th:href = "@{/delete/{id}(id = ${mushroom.mushroomid})}">Delete</a>
 				</td>
 		</tbody>
 	</table>

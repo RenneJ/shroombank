@@ -11,16 +11,16 @@ import jakarta.validation.constraints.NotBlank;
 public class Mushroom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private long mushroomid;
 	private String name;
 	@NotBlank(message = "Binomen cannot be left blank")
 	private String binomen; //fancier word scientific name
 	private String edible;
 	private double taste;
 	
-	public Mushroom(long id, String name, String binomen, String edible, double taste) {
+	public Mushroom(long mushroomid, String name, String binomen, String edible, double taste) {
 		super();
-		this.id = id;
+		this.mushroomid = mushroomid;
 		this.name = name;
 		this.binomen = binomen;
 		this.edible = edible;
@@ -30,11 +30,11 @@ public class Mushroom {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public long getId() {
-		return id;
+	public long getMushroomid() {
+		return mushroomid;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setMushroomid(long mushroomid) {
+		this.mushroomid = mushroomid;
 	}
 	public String getName() {
 		return name;
@@ -62,7 +62,7 @@ public class Mushroom {
 	}
 	@Override
 	public String toString() {
-		return "Mushroom [id=" + id + ", name=" + name + ", binomen=" + binomen + ", edible=" + edible + ", taste="
+		return "Mushroom [id=" + mushroomid + ", name=" + name + ", binomen=" + binomen + ", edible=" + edible + ", taste="
 				+ taste + "]";
 	}
 

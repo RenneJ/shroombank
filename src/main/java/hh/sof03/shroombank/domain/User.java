@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity(name="users")
 public class User {
@@ -12,10 +13,12 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "userid", nullable = false, updatable = false)
-	private Long userid;
+	private Long userId;
 	@Column(name = "username", nullable = false, unique = true)
+	@NotBlank(message = "Username cannot be empty!")
 	private String username;
 	@Column(name = "hash", nullable = false)
+	@NotBlank(message = "Password cannot be empty!")
 	private String hash;
 	@Column(name = "role", nullable = false)
 	private String role;
@@ -30,11 +33,11 @@ public class User {
 		this.hash = hash;
 		this.role = role;
 	}
-	public Long getUserid() {
-		return userid;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUserid(Long userid) {
-		this.userid = userid;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getUsername() {
 		return username;
@@ -53,5 +56,9 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", userName=" + username + ", hash=" + hash + ", role=" + role + "]";
 	}
 }

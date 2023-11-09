@@ -25,11 +25,15 @@ public class WebSecurityConfiguration {
 		http.
 		authorizeHttpRequests( authorize -> authorize
 				.requestMatchers(antMatcher("/css/**")).permitAll()
+				.requestMatchers(antMatcher("/signup")).permitAll()		//allow anyone to view sign up form
+				.requestMatchers(antMatcher("/saveuser")).permitAll()	// allow anyone to make new user
 				.anyRequest().authenticated()
 		)
-		.formLogin(formLogin -> formLogin
+		.formLogin(form -> form
+				.loginPage("/login")
 				.defaultSuccessUrl("/mushroomlist", true)
 				.permitAll()
+				
 		)
 		.logout(logout -> logout
 				.permitAll()

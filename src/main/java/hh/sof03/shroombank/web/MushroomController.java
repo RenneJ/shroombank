@@ -1,9 +1,8 @@
 package hh.sof03.shroombank.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.sof03.shroombank.domain.Mushroom;
 import hh.sof03.shroombank.domain.MushroomRepository;
+
 import jakarta.validation.Valid;
+
 @CrossOrigin
 @Controller
 public class MushroomController {
@@ -59,7 +60,7 @@ public class MushroomController {
 		return "editmushroom";
 	}
 	@GetMapping(value = "/delete/{id}")
-	//@PreAuthorize("hasAuthority('ADMIN')")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteMushroom(@PathVariable("id") Long id, Model model) {
 		mushroomRepo.deleteById(id);
 		return "redirect:/mushroomlist";

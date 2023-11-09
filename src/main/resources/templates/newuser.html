@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<title>New user</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body style="padding: 15px">
+
+	<div>
+		<h1>New User</h1>
+		<form th:object="${user}" th:action="@{/saveuser}" action="#" method="post">
+			<div class="form-group">
+				<label style="min-width: 80px">Username</label>
+					<input type="text" th:field="*{username}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+				<p th:errors="*{username}" style="color: red">Error text</p>
+				
+				<label style="min-width: 80px">Password</label>
+					<input type="password" th:field="*{hash}" />
+				<div style = "clear: both; display: block; height: 10px;"></div>
+				<p th:errors="*{hash}" style="color: red">Error text</p>			
+
+				<input type="submit" value="Save" />
+			</div>
+		</form>
+	</div>
+</body>

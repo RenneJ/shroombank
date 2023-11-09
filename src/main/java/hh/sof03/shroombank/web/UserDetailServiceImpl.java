@@ -24,7 +24,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		User curruser = repository.findByUsername(username);
 		if(curruser == null) {
-			throw new UsernameNotFoundException("");
+			throw new UsernameNotFoundException("_"); // parameter required for function but not necessary for this application; using default message "Bad credentials"
 		}
 			UserDetails user = new org.springframework.security.core.userdetails.User(username, curruser.getHash(), 
 					AuthorityUtils.createAuthorityList(curruser.getRole()));
