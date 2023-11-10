@@ -19,7 +19,7 @@
 			<input type = "submit" value = "Sign Out" class = "btn btn-sm btn-danger"/>
 		</form>
 	</div>
-	<table class = "table table-striped" style = "width:800px">
+	<table class = "table table-striped">
 		<tbody>
 			<tr>
 				<th>Name</th>
@@ -32,13 +32,13 @@
 				<td th:text="|${mushroom.name} (${mushroom.binomen})|"></td> <!-- pipes "||" allow literal substitutions -->
 				<td th:text="${mushroom.edible}"></td>
 				<td th:text="${mushroom.taste}"></td>
-				<td>
+				<td sec:authorize = "hasAuthority('ADMIN')">
 					<a class = "btn btn-success" th:href = "@{/edit/{id}(id = ${mushroom.mushroomid})}">Edit</a>
 				</td>
-				<td sec:authorize = "hasAuthority('ADMIN')"> <!--   -->
+				<td sec:authorize = "hasAuthority('ADMIN')">
 					<a class = "btn btn-danger" th:href = "@{/delete/{id}(id = ${mushroom.mushroomid})}">Delete</a>
 				</td>
 		</tbody>
 	</table>
-	<a class = "btn btn-success" href = "/add" >New Mushroom</a>
+	<a class = "btn btn-success" sec:authorize = "hasAuthority('ADMIN')" href = "/add" >New Mushroom</a>
 </body>

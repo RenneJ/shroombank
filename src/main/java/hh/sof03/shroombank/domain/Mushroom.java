@@ -1,10 +1,13 @@
 package hh.sof03.shroombank.domain;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity(name="mushrooms")
@@ -17,6 +20,8 @@ public class Mushroom {
 	private String binomen; //fancier word scientific name
 	private String edible;
 	private double taste;
+	@OneToMany(mappedBy="mushroom")
+	private List<Collection> collections;
 	
 	public Mushroom(long mushroomid, String name, String binomen, String edible, double taste) {
 		super();
@@ -59,6 +64,12 @@ public class Mushroom {
 	}
 	public void setTaste(double taste) {
 		this.taste = taste;
+	}
+	public List<Collection> getCollections() {
+		return collections;
+	}
+	public void setCollections(List<Collection> collections) {
+		this.collections = collections;
 	}
 	@Override
 	public String toString() {

@@ -36,7 +36,7 @@ public class LoginController {
 			return "newuser";
 		}
 		int strength = 12; // work factor of bcrypt; "rounds"
-		String plaintext = user.getHash();	// user input to signup form
+		String plaintext = user.getHash();
 		BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(strength, new SecureRandom());
 		
 		user.setHash(bCryptPasswordEncoder.encode(plaintext));

@@ -5,24 +5,20 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
-<body style="padding: 15px">
+<body style="height: 100vh">
 
-	<div>
+	<div class="pt-3 d-flex flex-column align-items-center justify-content-center">
 		<h1>New User</h1>
-		<form th:object="${user}" th:action="@{/saveuser}" action="#" method="post">
-			<div class="form-group">
-				<label style="min-width: 80px">Username</label>
-					<input type="text" th:field="*{username}" />
-				<div style="clear: both; display: block; height: 10px;"></div>
+		<form class="d-flex flex-column align-items-center justify-content-center w-25" th:object="${user}" th:action="@{/saveuser}" action="#" method="post">
+			<div class="mt-2 w-100">
+				<input class="w-100" type="text" th:field="*{username}" placeholder="Username" />
 				<p th:errors="*{username}" style="color: red">Error text</p>
-				
-				<label style="min-width: 80px">Password</label>
-					<input th:field="*{hash}" type="password"/>
-				<div style = "clear: both; display: block; height: 10px;"></div>
-				<p th:errors="*{hash}" style="color: red">Error text</p>			
-
-				<input type="submit" value="Save" />
 			</div>
+			<div class="mt-2 w-100">
+				<input class="w-100" th:field="*{hash}" type="password" placeholder="Password" />
+				<p th:errors="*{hash}" style="color: red">Error text</p>
+			</div>
+				<input class="m-2 btn btn-success" type="submit" value="Save" />
 		</form>
 	</div>
 </body>

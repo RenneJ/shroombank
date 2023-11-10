@@ -41,13 +41,15 @@ public class MushroomController {
 		return "mushroomlist";
 	}
 	@GetMapping(value="/add")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String addMushroom (Model model) {
 		model.addAttribute("mushroom", new Mushroom());
 		return "addmushroom";
 	}
 	@PostMapping(value = "/save")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String saveMushroom(@ModelAttribute @Valid Mushroom mushroom, Errors errors, Model model) {
-		// condition is implemented because empty rows must not be saved to database; binomen is required
+		// condition is implemented because empty rows must not be saved to database; binomen is the least required datum
 		if(errors.hasErrors()) {
 			return "addmushroom";
 		}
@@ -55,6 +57,7 @@ public class MushroomController {
 		return "redirect:mushroomlist";
 	}
 	@GetMapping(value = "/edit/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public String editMushroom(@PathVariable("id") Long id, Model model) {
 		model.addAttribute("mushroom", mushroomRepo.findById(id));
 		return "editmushroom";
