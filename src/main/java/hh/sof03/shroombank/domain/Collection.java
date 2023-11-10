@@ -28,9 +28,8 @@ public class Collection {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Collection(long collectionid, Mushroom mushroom, User user, double quantity, Date date, String location) {
+	public Collection(Mushroom mushroom, User user, double quantity, Date date, String location) {
 		super();
-		this.collectionid = collectionid;
 		this.mushroom = mushroom;
 		this.user = user;
 		this.quantity = quantity;

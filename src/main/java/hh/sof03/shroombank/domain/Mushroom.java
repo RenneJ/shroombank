@@ -23,9 +23,8 @@ public class Mushroom {
 	@OneToMany(mappedBy="mushroom")
 	private List<Collection> collections;
 	
-	public Mushroom(long mushroomid, String name, String binomen, String edible, double taste) {
+	public Mushroom(String name, String binomen, String edible, double taste) {
 		super();
-		this.mushroomid = mushroomid;
 		this.name = name;
 		this.binomen = binomen;
 		this.edible = edible;

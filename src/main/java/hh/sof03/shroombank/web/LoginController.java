@@ -24,11 +24,12 @@ import jakarta.validation.Valid;
 public class LoginController {
 	@Autowired
 	private UserRepository userRepo;
+	
 	@GetMapping(value="/login")
 	public String login() {
 		return "login";
 	}
-	@GetMapping(value="/index")
+	@GetMapping(value={"/index"})
 	public String showIndex() {
 		return "index";
 	}

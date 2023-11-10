@@ -5,21 +5,14 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
-<body style = "padding: 15px">
-	<h2>Logged in as <span sec:authentication = "name"></span></h2>
-	<h2>Roles:
-		<th:block th:each = "role, iterStatus:${#authentication.getAuthorities()}">
-	    	<th:block th:text = "${role}" ></th:block>
-	    	 <!-- Tämä ehtolauseke ei tee juuri nyt mitään, mutta jos rooleja (authorities-attribuutteja) olisi useampi niin pilkut menisivät oikein-->
-	    	<th:block th:if = "${!iterStatus.last}">, </th:block>
-		</th:block>
-	</h2>
-	<div>
-		<form th:action = "@{/logout}" method = "post">
-			<input type = "submit" value = "Sign Out" class = "btn btn-sm btn-danger"/>
+<body>
+		<div class="mt-5 mx-5 d-flex justify-content-between align-items-center">
+		<h2>Logged in as: <span sec:authentication="name"></span></h2>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class = "btn btn-sm btn-danger"/>
 		</form>
 	</div>
-	<table class = "table table-striped">
+	<table class="table table-striped">
 		<tbody>
 			<tr>
 				<th>Name</th>
@@ -32,13 +25,19 @@
 				<td th:text="|${mushroom.name} (${mushroom.binomen})|"></td> <!-- pipes "||" allow literal substitutions -->
 				<td th:text="${mushroom.edible}"></td>
 				<td th:text="${mushroom.taste}"></td>
-				<td sec:authorize = "hasAuthority('ADMIN')">
-					<a class = "btn btn-success" th:href = "@{/edit/{id}(id = ${mushroom.mushroomid})}">Edit</a>
+				<td sec:authorize="hasAuthority('USER')"></td> <!-- auth check is used for conditional rendering -->
+				<td sec:authorize="hasAuthority('USER')">
+					<div class="mr-4 d-flex flex-row-reverse">
+						<a class="btn btn-success text-white">Add to collection</a>
+					</div>
 				</td>
-				<td sec:authorize = "hasAuthority('ADMIN')">
-					<a class = "btn btn-danger" th:href = "@{/delete/{id}(id = ${mushroom.mushroomid})}">Delete</a>
+				<td sec:authorize="hasAuthority('ADMIN')">
+					<a class="btn btn-success" th:href="@{/edit/{id}(id = ${mushroom.mushroomid})}">Edit</a>
+				</td>
+				<td sec:authorize="hasAuthority('ADMIN')">
+					<a class="btn btn-danger" th:href="@{/delete/{id}(id = ${mushroom.mushroomid})}">Delete</a>
 				</td>
 		</tbody>
 	</table>
-	<a class = "btn btn-success" sec:authorize = "hasAuthority('ADMIN')" href = "/add" >New Mushroom</a>
+	<a class="btn btn-success" sec:authorize="hasAuthority('ADMIN')" href="/add" >New Mushroom</a>
 </body>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<title>Collection</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body style="height: 100vh">
+		<div class="mt-5 mx-5 d-flex justify-content-between align-items-center">
+		<h2>Logged in as: <span sec:authentication="name"></span></h2>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" class = "btn btn-sm btn-danger"/>
+		</form>
+	</div>
+	<table class="table table-striped">
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Quantity</th>
+				<th>Location</th>
+			</tr>
+			<tr th:each="collection : ${collections}">
+				<td th:text="|${collection.mushroom.name} (${collection.mushroom.binomen})|"></td>
+				<td th:text="${collection.date}"></td>
+				<td th:text="${collection.quantity} + ' g'"></td>
+				<td th:text="${collection.location}"></td>
+		</tbody>
+	</table>
+</body>
+</html>
