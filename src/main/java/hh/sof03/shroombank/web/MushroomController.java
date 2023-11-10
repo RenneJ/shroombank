@@ -49,7 +49,7 @@ public class MushroomController {
 	@PostMapping(value = "/save")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String saveMushroom(@ModelAttribute @Valid Mushroom mushroom, Errors errors, Model model) {
-		// condition is implemented because empty rows must not be saved to database; binomen is the least required datum
+		// empty rows must not be saved to database; binomen is the least required datum
 		if(errors.hasErrors()) {
 			return "addmushroom";
 		}

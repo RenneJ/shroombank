@@ -16,6 +16,9 @@ import hh.sof03.shroombank.domain.User;
 import hh.sof03.shroombank.domain.UserRepository;
 import jakarta.validation.Valid;
 
+
+/*METHODS FOR LOGIN AND SIGNUP. CONDITIONAL REDIRECT TO EITHER USER VIEW OR ADMIN VIEW*/
+
 @CrossOrigin
 @Controller
 public class LoginController {
@@ -24,6 +27,10 @@ public class LoginController {
 	@GetMapping(value="/login")
 	public String login() {
 		return "login";
+	}
+	@GetMapping(value="/index")
+	public String showIndex() {
+		return "index";
 	}
 	@GetMapping(value="/signup")
 	public String newUser(Model model) {

@@ -31,7 +31,7 @@ public class WebSecurityConfiguration {
 		)
 		.formLogin(form -> form
 				.loginPage("/login")
-				.defaultSuccessUrl("/mushroomlist", true)
+				.defaultSuccessUrl("/index", true)
 				.permitAll()
 				
 		)
