@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<title>Shroombank</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body style="padding: 15px">
+
+	<div class="pt-3 d-flex flex-column align-items-center justify-content-center">
+
+		<h1>EDIT PAGE </h1>
+		<form th:object="${collection}" th:action="@{/savecollection}" action="#" method="post">
+			<label for="id"></label>
+				<input type="hidden" id="id" th:field="*{collectionid}" readonly="readonly" />
+				<br>
+				
+			<label>Mushroom</label>
+				<select th:field = "*{mushroom}" >
+					<option th:each = "mushroom : ${mushrooms}" th:value = "${mushroom.mushroomid}" th:text = "|${mushroom.name} (${mushroom.binomen})|">
+					</option>
+				</select>
+			<div style = "clear: both; display: block; height: 10px;"></div>
+			
+			<label style="min-width: 85px">Quantity (g)</label>
+				<input type="number" th:field = "*{quantity}" />
+			<div style = "clear: both; display: block; height: 10px;"></div>
+				
+			<label style="min-width: 85px">Location</label>
+				<textarea rows="2" cols="25" th:field="*{location}" ></textarea>
+			<div style="clear: both; display: block; height: 10px;"></div>
+				
+			<label style="min-width: 85px">Date</label>
+				<input type="date" th:field="*{date}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+
+				<input class="btn btn-success" type="submit" value="Edit" />
+		</form>
+
+	</div>
+</body>

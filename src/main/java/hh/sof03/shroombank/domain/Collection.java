@@ -21,7 +21,7 @@ public class Collection {
 	@ManyToOne
 	@JoinColumn(name="userid")
 	private User user;
-	private double quantity;
+	private int quantity;
 	private Date date;
 	private String location;
 	
@@ -29,7 +29,7 @@ public class Collection {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Collection(Mushroom mushroom, User user, double quantity, Date date, String location) {
+	public Collection(Mushroom mushroom, User user, int quantity, Date date, String location) {
 		super();
 		this.mushroom = mushroom;
 		this.user = user;
@@ -55,10 +55,10 @@ public class Collection {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public double getQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
-	public void setQuantity(double quantity) {
+	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
 	public Date getDate() {

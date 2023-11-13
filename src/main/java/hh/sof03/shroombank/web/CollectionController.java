@@ -1,6 +1,7 @@
 package hh.sof03.shroombank.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,6 +49,20 @@ public class CollectionController {
 		collection.setUser(userRepo.findByUsername(username));
 		collectionRepo.save(collection);
 		return "redirect:/collection";
+	}
+	@GetMapping(value="/editcollection/{id}")
+	public String editCollection(@PathVariable("id") Long collectionid, @CurrentSecurityContext(expression="authentication?.name") String username,Model model) {
+		Collection collection = collectionRepo.findById(collectionid).get();
+		User currentuser = userRepo.findByUsername(username);
+		// Users are only allowed to edit their own collections; collection needs to have currentuser as its "user" attribute
+		if (collection != null && collection.getUser() == currentuser) {
+			model.addAttribute("mushrooms", mushroomRepo.findAll());
+			model.addAttribute("collection", collectionRepo.findById(collectionid));
+			return "editcollection";
+		} else {
+			return "error";
+		}
+		
 	}
 }
 
