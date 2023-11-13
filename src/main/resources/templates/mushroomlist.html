@@ -28,7 +28,7 @@
 				<td sec:authorize="hasAuthority('USER')"></td> <!-- auth check is used for conditional rendering -->
 				<td sec:authorize="hasAuthority('USER')">
 					<div class="mr-4 d-flex flex-row-reverse">
-						<a class="btn btn-success text-white">Add to collection</a>
+						<a class="btn btn-success text-white" th:href="@{/collect/{id}(id = ${mushroom.mushroomid})}">Add to collection</a>
 					</div>
 				</td>
 				<td sec:authorize="hasAuthority('ADMIN')">

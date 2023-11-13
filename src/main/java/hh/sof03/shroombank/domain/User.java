@@ -2,6 +2,7 @@ package hh.sof03.shroombank.domain;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class User {
 	private String hash;
 	@Column(name = "role", nullable = false)
 	private String role;
-	@OneToMany(mappedBy="user")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
 	private List<Collection> collections;
 	
 	public User() {

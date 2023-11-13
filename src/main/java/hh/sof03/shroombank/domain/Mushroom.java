@@ -2,6 +2,7 @@ package hh.sof03.shroombank.domain;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +21,7 @@ public class Mushroom {
 	private String binomen; //fancier word scientific name
 	private String edible;
 	private double taste;
-	@OneToMany(mappedBy="mushroom")
+	@OneToMany(cascade = CascadeType.ALL,mappedBy="mushroom")
 	private List<Collection> collections;
 	
 	public Mushroom(String name, String binomen, String edible, double taste) {

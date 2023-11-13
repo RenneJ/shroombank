@@ -21,7 +21,7 @@
 				<th>Location</th>
 			</tr>
 			<tr th:each="collection : ${collections}">
-				<td th:text="|${collection.mushroom.name} (${collection.mushroom.binomen})|"></td>
+				<td th:text="${collection.mushroom}"></td>
 				<td th:text="${collection.date}"></td>
 				<td th:text="${collection.quantity} + ' g'"></td>
 				<td th:text="${collection.location}"></td>

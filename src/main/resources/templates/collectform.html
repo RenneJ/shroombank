@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+	<title>Shroombank</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body style="padding: 15px">
+
+	<div class="pt-3 d-flex flex-column align-items-center justify-content-center">
+
+		<form th:object="${collection}" th:action="@{/savecollection}" action="#" method="post">
+			<div class="form-group">
+			<label for="id"></label>
+					<input type="text" id="id" th:field="*{mushroom}" th:value="*{mushroom.mushroomid}" readonly="readonly" />
+				
+				  <label style="min-width: 85px">Quantity (g)</label>
+					<input type="number" th:field = "*{quantity}" />
+				<div style = "clear: both; display: block; height: 10px;"></div>
+				
+				<label style="min-width: 85px">Location</label>
+					<textarea rows="2" cols="25" th:field="*{location}" ></textarea>
+				<div style="clear: both; display: block; height: 10px;"></div>
+				
+				<label style="min-width: 85px">Date</label>
+					<input type="date" th:field="*{date}" />
+				<div style="clear: both; display: block; height: 10px;"></div>
+
+				<input type="submit" value="Collect" />
+			</div>
+		</form>
+	</div>
+</body>

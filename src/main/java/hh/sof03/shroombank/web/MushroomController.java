@@ -51,15 +51,15 @@ public class MushroomController {
 	public String saveMushroom(@ModelAttribute @Valid Mushroom mushroom, Errors errors, Model model) {
 		// empty rows must not be saved to database; binomen is the least required datum
 		if(errors.hasErrors()) {
-			return "addmushroom";
+			return "editmushroom";
 		}
 		mushroomRepo.save(mushroom);
 		return "redirect:mushroomlist";
 	}
 	@GetMapping(value = "/edit/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
-	public String editMushroom(@PathVariable("id") Long id, Model model) {
-		model.addAttribute("mushroom", mushroomRepo.findById(id));
+	public String editMushroom(@PathVariable("id") Long mushroomid, Model model) {
+		model.addAttribute("mushroom", mushroomRepo.findById(mushroomid));
 		return "editmushroom";
 	}
 	@GetMapping(value = "/delete/{id}")

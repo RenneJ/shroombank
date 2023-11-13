@@ -2,6 +2,7 @@ package hh.sof03.shroombank.domain;
 
 import java.sql.Date;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,10 +17,10 @@ public class Collection {
 	private long collectionid;
 	@ManyToOne
 	@JoinColumn(name="mushroomid")
-	Mushroom mushroom;
+	private Mushroom mushroom;
 	@ManyToOne
 	@JoinColumn(name="userid")
-	User user;
+	private User user;
 	private double quantity;
 	private Date date;
 	private String location;
