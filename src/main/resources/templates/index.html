@@ -16,7 +16,8 @@
 		<a class="m-2 btn btn-info text-white" th:href="@{/mushroomlist}">All mushrooms</a>
 	</div>
 	<div>
-		<a class="m-2 btn btn-info text-white" th:href="@{/collection}">My collection</a>
+		<a class="m-2 btn btn-info text-white" sec:authorize="hasAuthority('ADMIN')" th:href="@{/listusers}">Users</a>
+		<a class="m-2 btn btn-info text-white" sec:authorize="hasAuthority('USER')" th:href="@{/collection}">My collection</a>
 	</div>
 	
 	<!--  <p sec:authorize="hasAuthority('ADMIN')">ADMIN PAGE</p>
