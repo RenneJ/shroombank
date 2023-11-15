@@ -24,17 +24,12 @@ public class MushroomController {
 	@Autowired
 	private MushroomRepository mushroomRepo;
 	
-	// RESTful methods
+	// RESTful methods, API
 	@GetMapping(value="/mushrooms")
 	public @ResponseBody Iterable<Mushroom> findAllMushrooms() {
 		return this.mushroomRepo.findAll();
 	}
-	// ONLY FOR TESTING. Remove this from production version. 
-	@PostMapping(value="/mushrooms")
-	public @ResponseBody Mushroom addOneMushroom(@RequestBody Mushroom mushroom) {
-		return this.mushroomRepo.save(mushroom);
-	}
-	//TODO: "regular" controller methods
+	// Regular methods, html
 	@GetMapping(value="/mushroomlist")
 	public String showMushroomList(Model model) {
 		model.addAttribute("mushrooms", mushroomRepo.findAll());
