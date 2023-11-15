@@ -25,8 +25,13 @@ public class UserController {
 	@GetMapping(value = "/deleteuser/{id}")
 	@PreAuthorize("hasAuthority('ADMIN')")
 	public String deleteUser(@PathVariable("id") Long id, Model model) {
+		// Don't delete urself admin!
+		if (id == 1 && userRepo.findById(id).get().getRole().equals("ADMIN")) {
+			return "redirect:/listusers";
+		} else {
 		userRepo.deleteById(id);
 		return "redirect:/listusers";
+		}
 	}
 
 }
