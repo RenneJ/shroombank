@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import hh.sof03.shroombank.domain.UserRepository;
 
@@ -20,6 +21,12 @@ public class UserController {
 	public String listAllUsers(Model model) {
 		model.addAttribute("users", userRepo.findAll());
 		return "userlist";
+	}
+	@GetMapping(value = "/deleteuser/{id}")
+	@PreAuthorize("hasAuthority('ADMIN')")
+	public String deleteUser(@PathVariable("id") Long id, Model model) {
+		userRepo.deleteById(id);
+		return "redirect:/listusers";
 	}
 
 }
