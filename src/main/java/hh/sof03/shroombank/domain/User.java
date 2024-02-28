@@ -26,6 +26,8 @@ public class User {
 	private String hash;
 	@Column(name = "role", nullable = false)
 	private String role;
+	@Column(name = "created")
+	private String created;
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="user")
 	private List<Collection> collections;
 	
@@ -62,6 +64,12 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public String getCreated() {
+		return created;
+	}
+	public void setCreated(String created) {
+		this.created = created;
 	}
 	public List<Collection> getCollections() {
 		return collections;

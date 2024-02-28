@@ -1,6 +1,8 @@
 package hh.sof03.shroombank.web;
 
 import java.security.SecureRandom;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -43,12 +45,15 @@ public class LoginController {
 		if(errors.hasErrors()) {
 			return "newuser";
 		}
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		LocalDateTime now = LocalDateTime.now();
 		int strength = 12; // work factor of bcrypt; "rounds"
 		String plaintext = user.getHash();
 		BCryptPasswordEncoder bCryptPasswordEncoder =new BCryptPasswordEncoder(strength, new SecureRandom());
 		
 		user.setHash(bCryptPasswordEncoder.encode(plaintext));
 		user.setRole("USER");	// only USER role can be made with UI
+		user.setCreated(dateFormat.format(now));
 		userRepo.save(user);
 		return "redirect:login";
 	}
