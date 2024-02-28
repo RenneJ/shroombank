@@ -20,11 +20,13 @@
 			<tr>
 				<th>Username</th>
 				<th>Role</th>
+				<th>Created</th>
 				<th></th>
 			</tr>
 			<tr th:each="user : ${users}">
 				<td th:text="${user.username}"></td>
 				<td th:text="${user.role}"></td>
+				<td th:text="${user.created}"></td>
 				<td sec:authorize="hasAuthority('ADMIN')" th:unless="${user.role == 'ADMIN'}">
 					<a class="btn btn-danger text-white" sec:authorize="hasAuthority('ADMIN')" th:href="@{/deleteuser/{id}(id=${user.userid})}">Delete</a>
 				</td>
