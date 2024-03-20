@@ -2,6 +2,8 @@ package hh.sof03.shroombank.domain;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class User {
 	private String username;
 	@Column(name = "hash", nullable = false)
 	@NotBlank(message = "Password cannot be empty!")
+	@JsonIgnore
 	private String hash;
 	@Column(name = "role", nullable = false)
 	private String role;

@@ -4,6 +4,12 @@
 	<title>Shroombank</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
 </head>
 <body style="padding: 15px">
 
@@ -23,6 +29,7 @@
 				<label style="min-width: 85px">Location</label>
 					<textarea rows="2" cols="25" th:field="*{location}" ></textarea>
 				<div style="clear: both; display: block; height: 10px;"></div>
+				<!-- <div style="height: 180px" id="map"></div> -->
 				
 				<label style="min-width: 85px">Date</label>
 					<input type="date" th:field="*{date}" />

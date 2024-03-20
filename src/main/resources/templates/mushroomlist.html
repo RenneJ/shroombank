@@ -20,14 +20,14 @@
 			<tr>
 				<th>Name</th>
 				<th>Edible</th>
-				<th>Taste</th>
+				<!--<th>Taste</th> -->
 				<th></th>
 				<th></th>
 			</tr>
 			<tr th:each="mushroom : ${mushrooms}">
 				<td th:text="|${mushroom.name} (${mushroom.binomen})|"></td> <!-- pipes "||" allow literal substitutions -->
 				<td th:text="${mushroom.edible}"></td>
-				<td th:text="${mushroom.taste}"></td>
+				<!--<td th:text="${mushroom.taste}"></td>-->
 				<td sec:authorize="hasAuthority('USER')"></td> <!-- auth check is used for conditional rendering -->
 				<td sec:authorize="hasAuthority('USER')">
 					<div class="mr-4 d-flex flex-row-reverse">

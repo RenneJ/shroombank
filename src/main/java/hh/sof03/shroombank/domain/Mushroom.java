@@ -23,16 +23,16 @@ public class Mushroom {
 	@NotBlank(message = "Binomen cannot be left blank")
 	private String binomen; //fancier word scientific name
 	private String edible;
-	private double taste;
+	//private double taste;
 	@OneToMany(cascade = CascadeType.ALL,mappedBy="mushroom")
 	private List<Collection> collections;
 	
-	public Mushroom(String name, String binomen, String edible, double taste) {
+	public Mushroom(String name, String binomen, String edible) {
 		super();
 		this.name = name;
 		this.binomen = binomen;
 		this.edible = edible;
-		this.taste = taste;
+		//this.taste = taste;
 	}
 	public Mushroom() {
 		super();
@@ -62,12 +62,12 @@ public class Mushroom {
 	public void setEdible(String edible) {
 		this.edible = edible;
 	}
-	public double getTaste() {
-		return taste;
-	}
-	public void setTaste(double taste) {
-		this.taste = taste;
-	}
+//	public double getTaste() {
+//		return taste;
+//	}
+//	public void setTaste(double taste) {
+//		this.taste = taste;
+//	}
 	public List<Collection> getCollections() {
 		return collections;
 	}
@@ -76,8 +76,7 @@ public class Mushroom {
 	}
 	@Override
 	public String toString() {
-		return "Mushroom [id=" + mushroomid + ", name=" + name + ", binomen=" + binomen + ", edible=" + edible + ", taste="
-				+ taste + "]";
+		return "Mushroom [id=" + mushroomid + ", name=" + name + ", binomen=" + binomen + ", edible=" + edible + "]";
 	}
 
 }

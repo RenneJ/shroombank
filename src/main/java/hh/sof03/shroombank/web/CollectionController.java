@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import hh.sof03.shroombank.domain.Collection;
 import hh.sof03.shroombank.domain.CollectionRepository;
+import hh.sof03.shroombank.domain.Mushroom;
 import hh.sof03.shroombank.domain.MushroomRepository;
 import hh.sof03.shroombank.domain.User;
 import hh.sof03.shroombank.domain.UserRepository;
@@ -24,14 +26,22 @@ public class CollectionController {
 	private CollectionRepository collectionRepo;
 	@Autowired
 	private MushroomRepository mushroomRepo;
-		
+	
+	@GetMapping(value="/collectiondata")
+	public @ResponseBody Iterable<Collection> findCollections(@CurrentSecurityContext(expression="authentication?.name") String username) {
+		User currentuser = userRepo.findByUsername(username);
+		// admin can see all collections, USER sees only their own
+		if (currentuser.getRole().equals("ADMIN")) {
+			return this.collectionRepo.findAll();
+		}
+		return this.collectionRepo.findAllByUser(currentuser);
+	}
 	@GetMapping(value="/collection")
 	public String listCollection(@CurrentSecurityContext(expression="authentication?.name") String username, Model model) {
 		User currentuser = userRepo.findByUsername(username);
 		model.addAttribute("collections", collectionRepo.findAllByUser(currentuser));
 	    return "collectionlist";
 	}
-	// TODO: collection edit, error handling /collect/BAD_ID
 	@GetMapping(value="/collect/{id}")
 	public String collectMushroom(@PathVariable("id") Long mushroomid, Model model) {
 		// Initialize a new collection.
